@@ -1,6 +1,33 @@
+import { useState } from "react";
 import "./Form.css";
 
 export const Form = () => {
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const usernameHandler = (e) => {
+      setUsername(e.target.value);
+  }
+
+  const passwordHandler = (e) => {
+    setPassword(e.target.value);
+  }
+
+  const submitHandler = () => {
+    
+    alert(
+        `My username: ${username}
+        My password: ${password}`
+    )
+  };
+
+const resetHandler = () => {
+    
+  setUsername("");
+  setPassword("");
+}
+
 
   return (
 
@@ -20,23 +47,24 @@ export const Form = () => {
         <div className="container">
 
           <div className="form">
-            <h2>Login Form</h2>
+            
+            <h1>Login Form</h1>
 
             <form>
 
               <div className="input-box">
-                <input type="text" placeholder="Username" />
+                <input type="text" placeholder="Username" onChange={usernameHandler}/>
               </div>
 
               <div className="input-box">
-                <input type="password" placeholder="Password" />
+                <input type="password" placeholder="Password"onChange={passwordHandler}/>
               </div>
 
               <div className="input-box">
-                <input type="submit" value="Login" />
+                <input type="submit" value="Login" onClick={submitHandler}/>
               </div>
 
-              <p className="reset">Reset</p>
+              <p className="reset" onClick={resetHandler}>Reset</p>
 
             </form>
 
